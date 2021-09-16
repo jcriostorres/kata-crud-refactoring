@@ -1,4 +1,4 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.todo_tarea;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

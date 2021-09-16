@@ -1,4 +1,4 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.todo_tarea;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
