@@ -1,17 +1,24 @@
 package co.com.sofka.crud.todo_tarea;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
+@Table(name= "tarea")
 public class Todo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private boolean completed;
     private String groupListId;
+
+
+    public Todo() {
+
+    }
 
     public String getGroupListId() {
         return groupListId;
