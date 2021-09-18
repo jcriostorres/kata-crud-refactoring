@@ -1,23 +1,34 @@
-package co.com.sofka.crud.todo_tarea;
+package co.com.sofka.crud.entities;
 
+import org.hibernate.validator.constraints.Length;
 import javax.persistence.*;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name= "tarea")
+@Table(name="tareas")
 public class Todo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    //@Length(min=3, max=100)
+    private String task;
     private boolean completed;
     private String groupListId;
 
+//    @ManyToOne()
+//    @JoinColumn(name = "id")
+//    //private Lista lista;
 
-    public Todo() {
 
+    public Todo(){
+
+    }
+    public Todo(Long id, String task, boolean completed, String groupListId) {
+        this.id = id;
+        this.task = task;
+        this.completed = completed;
+        this.groupListId = groupListId;
     }
 
     public String getGroupListId() {
@@ -36,12 +47,12 @@ public class Todo {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTask() {
+        return task;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTask(String task) {
+        this.task = task;
     }
 
     public boolean isCompleted() {
