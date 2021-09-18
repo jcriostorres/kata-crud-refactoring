@@ -10,11 +10,17 @@ public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-    //@Length(min=3, max=100)
+
+    @Length(min=3, max=100)
+    @Column(name="task")
     private String task;
+
+    @Column(name="completed")
     private boolean completed;
     private String groupListId;
+    private Categoria categoria;
 
 //    @ManyToOne()
 //    @JoinColumn(name = "id")
@@ -29,7 +35,10 @@ public class Todo {
         this.task = task;
         this.completed = completed;
         this.groupListId = groupListId;
+
     }
+
+
 
     public String getGroupListId() {
         return groupListId;
@@ -61,5 +70,16 @@ public class Todo {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+
+
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

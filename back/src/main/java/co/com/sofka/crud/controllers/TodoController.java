@@ -1,11 +1,15 @@
 package co.com.sofka.crud.controllers;
 
 import co.com.sofka.crud.entities.Todo;
+import co.com.sofka.crud.entities.Categoria;
 import co.com.sofka.crud.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -20,6 +24,7 @@ public class TodoController {
         return todoService.list();
     }
 
+
     @PostMapping(value = "/api/tareas")
     public Todo save(@RequestBody Todo todo){
         try {
@@ -31,6 +36,14 @@ public class TodoController {
 
     }
 
+
+    //Save a new categoria
+    @PostMapping(value = "/api/todo/categoria")
+    public Categoria saveCategoria(@RequestBody Categoria categoria){
+        return todoService.saveCategoria(categoria);
+    }
+
+
     @PutMapping(value = "/api/tareas/{id}")
     public Todo update(@RequestBody Todo todo){
         if(todo.getId() != null){
@@ -40,7 +53,12 @@ public class TodoController {
     }
 
     @DeleteMapping(value = "/api/tareas/{id}")
-    public void delete(@PathVariable("id")Long id){
+    public void delete(@PathVariable("id")Long id, @RequestBody ArrayList<Long> idTasks){
+        todoService.delete(id);
+    }
+
+    @DeleteMapping(value = "api/todo/categoria/{id}")
+    public void delete(@PathVariable("id") Long id) {
         todoService.delete(id);
     }
 
